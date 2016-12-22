@@ -1,2 +1,2 @@
 # BW_to_RG
-Convert a Black/White picture to Red/Green tones.
+Convert a picture to red/green by "killing" other channels.

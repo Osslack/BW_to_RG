@@ -10,7 +10,7 @@ def transform_images(imageList):
     print("Transforming",imageList)
     for file in imageList:
         im = Image.open(file)
-        #im2 = Image.new( 'RGB',im.size, 0)
+        im2 = Image.new( 'RGB',im.size, 0)
 
 
         width = im.size[0]
@@ -22,8 +22,8 @@ def transform_images(imageList):
 
 
         pixels_old = im.load()
-        pixels_new = []
-        #pixels_new = im2.load()
+        #pixels_new = []
+        pixels_new = im2.load()
 
         print("Transforming ", file)
         for i in range(im.size[0]):    # for every pixel:
@@ -45,11 +45,9 @@ def transform_images(imageList):
                     else:
                         pixel[1] = 0
                         #pixels_new[i,j] = (pixel[0], 0, 0)
-                # set the colour accordingly
-                pixels_new.append(pixel)
-        #im2.save("output/rg_" + file)
-        im.paste(pixels_new)
-        im.save("output/rg_" + file)
+                pixels_new[i,j] = tuple(pixel)
+                
+        im2.save("output/rg_" + file)
         print("Success")
 
 fileEnding = "\.png$|\.jpg$|\.jpeg$"
